@@ -1,0 +1,23 @@
+.comic {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  width: 180px;
+}
+
+.comic__image {
+  width: 100%;
+}
+
+.comic__title {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 18.75px;
+  margin: 12px 0 0;
+}
+
+.comic__year {
+  font-size: 12px;
+  line-height: 14.06px;
+  margin: 8px 0 0;
+}

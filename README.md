@@ -16,7 +16,7 @@ Después de añadir las claves, lo primero es instalar todas las dependencias co
 - `npm run dev`: Inicia el servidor de desarrollo
 - `npm build:dev`: Genera la build de desarrollo
 - `npm build:prod`: Genera la build de producción
-- `npm run dev`: Inicia el servidor con la última build
+- `npm run preview`: Inicia el servidor con la última build
 - `npm run lint`: Lanza el linter en busca de errores
 - `npm run test`: Lanza los tests
 
@@ -42,7 +42,7 @@ Usar una librería actualizada.
 
 ### Tests
 
-Hacer más tests para cubrir más casos.
+Aumentar la cobertura de casos.
 
 ### Sass
 

@@ -11,7 +11,7 @@ const Favorites = ({
   const [search, setSearch] = useState('');
   const characters = search
     ? favoriteCharacters.filter((character) =>
-        character.name.toLowerCase().includes(search)
+        character.name.toLowerCase().includes(search.toLowerCase())
       )
     : favoriteCharacters;
 

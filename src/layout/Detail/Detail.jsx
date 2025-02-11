@@ -7,7 +7,7 @@ import './Detail.css';
 
 const Detail = ({ character, onClickMarkAsFavorite }) => {
   const { data: comics, isLoading } = useGetQuery(
-    character.comics.collectionURI.replace('http', 'https'),
+    character.comics.collectionURI,
     {
       orderBy: 'onsaleDate',
       limit: 20

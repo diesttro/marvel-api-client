@@ -7,7 +7,7 @@ import './Detail.css';
 
 const Detail = ({ character, onClickMarkAsFavorite }) => {
   const { data: comics, isLoading } = useGetQuery(
-    character.comics.collectionURI,
+    character.comics.collectionURI.replace('http', 'https'),
     {
       orderBy: 'onsaleDate',
       limit: 20
@@ -53,7 +53,7 @@ const Detail = ({ character, onClickMarkAsFavorite }) => {
       </div>
       <section className="comics">
         <h3 className="comics__title">Comics</h3>
-        {isLoading ? <p>Loading comics</p> : null}
+        {isLoading ? <p>Loading results</p> : null}
         {comics ? (
           <div className="comics__list">
             {comics.map((comic) => (

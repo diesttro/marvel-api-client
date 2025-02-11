@@ -11,7 +11,7 @@ const Home = ({
 }) => {
   const [search, setSearch] = useState('');
   const { data: characters, isLoading } = useGetQuery(
-    'http://gateway.marvel.com/v1/public/characters',
+    'https://gateway.marvel.com/v1/public/characters',
     { nameStartsWith: search, limit: 50 }
   );
 

@@ -37,6 +37,9 @@ const Detail = ({ character, onClickMarkAsFavorite }) => {
             <div className="group">
               <h1 className="character__name">{name}</h1>
               <button
+                aria-label={
+                  isFavorite ? 'Unmark as favorite' : 'Mark as favorite'
+                }
                 className="reset-button"
                 onClick={handleClickMarkAsFavorite}
               >

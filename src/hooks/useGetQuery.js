@@ -1,4 +1,4 @@
-import { useQuery } from 'react-query';
+import { useQuery } from '@tanstack/react-query';
 import SparkMD5 from 'spark-md5';
 import createURLParams from '../utils/createURLParams';
 
@@ -29,7 +29,10 @@ const useGetQuery = (uri, params = {}) => {
     ...params
   });
 
-  return useQuery([uri, urlParams], () => getQuery(uri + '?' + urlParams));
+  return useQuery({
+    queryKey: [uri, urlParams],
+    queryFn: () => getQuery(uri + '?' + urlParams)
+  });
 };
 
 export default useGetQuery;

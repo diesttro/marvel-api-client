@@ -30,7 +30,7 @@ const Card = ({ character, isFavorite, onClick, onClickMarkAsFavorite }) => {
         </div>
       </a>
       <button
-        aria-label={isFavorite ? 'Unmark as favorite' : 'Marks as favorite'}
+        aria-label={isFavorite ? 'Unmark as favorite' : 'Mark as favorite'}
         className="reset-button card__favorite"
         onClick={onClickMarkAsFavorite}
       >

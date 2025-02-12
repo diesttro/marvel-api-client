@@ -22,11 +22,11 @@ Después de añadir las claves, lo primero es instalar todas las dependencias co
 
 ## Arquitectura
 
-La aplicación es una SPA donde se van montando y desmontando componentes dependiendo de dos estados: `showFavorites` o `characterDetail`. El primer estado sirve para mostrar la lista de personajes favoritos, y el segundo estado sirve para guardar el detalle del personaje. Si ninguno de los dos estados está "activo" entonces se muestra el listado de personajes.
+La aplicación depende de dos estados: `showFavorites` o `characterDetail`. El primer estado es un booleano que sirve para mostrar la lista de personajes favoritos, y el segundo estado es un objeto con el detalle del personaje, que en caso de tener un valor mostrara la vista del detalle. Si ninguno de los dos estados cumple las condiciones entonces se muestra el listado de personajes.
 
-Las peticiones se han centralizado en un solo hook que solo recibe dos argumentos, la URI y los parámetros. Los resultados son cacheados dependiendo de los argumentos. Por ejemplo, los resultados de la petición a `http://gateway.marvel.com/v1/characters` con los parámetros `nameStartsWith=Hulk&limit=50` solo se lanza la primera vez, si se produce otra llamada a la misma URI con los mismos parámetros devolvera el resultado de la caché.
+Las peticiones se han centralizado en un solo hook por conveniencia. Este hook recibe dos argumentos, la URI y los parámetros de busqueda, y los resultados son cacheados (en memoria) dependiendo de los argumentos. Por ejemplo, al realizar una petición a `http://gateway.marvel.com/v1/characters` con los parámetros de busqueda `nameStartsWith=Hulk&limit=50`, el resultado es cacheado con el valor de ambos argumentos, por lo que cualquier petición que contenga los mismos argumentos recuperará los datos de caché.
 
-Para evitar lanzar una petición cada vez que se escribe en la barra de búsqueda, se ha implementado un `debounce` para no llamar al hook hasta que han transcurrido 500 milisegundos desde el último carácter introducido.
+También se ha implementado un `debounce` en la barra búsqueda para evitar múltiples llamadas al escribir caracteres. De este modo solo se lanzará la búsqueda cuando hayan transcurrido unos milisegundos desde el último carácter introducido.
 
 ## Posibles mejoras
 
@@ -36,14 +36,14 @@ La aplicación parecía más sencillo al principio, cumplir con todos los requis
 
 Simplificar las condiciones de renderizado y hacer un correcto uso de los enlaces.
 
-### TanStack Query
-
-Usar una librería actualizada.
-
 ### Tests
 
-Aumentar la cobertura de casos.
+Aumentar la cobertura código y cubrir más casos.
 
 ### Sass
 
-Utilizar mixins y otras herramientas.
+Utilizar mixins y otras herramientas para mejorar la estructura y el uso de estilos.
+
+### Componentes
+
+Separar código y moverlo a componentes para mejorar la legibilidad y su reutilización.

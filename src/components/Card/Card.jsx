@@ -20,11 +20,7 @@ const Card = ({ character, isFavorite, onClick, onClickMarkAsFavorite }) => {
         href="#"
         onClick={handleClick}
       >
-        <img
-          alt={name}
-          className="card__image"
-          src={`${thumbnail.path}.${thumbnail.extension}`}
-        />
+        <img alt={name} className="card__image" src={thumbnail} />
         <div className="card__info">
           <span className="card__name">{name}</span>
         </div>

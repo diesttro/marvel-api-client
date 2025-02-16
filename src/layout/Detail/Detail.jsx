@@ -1,20 +1,22 @@
 import { useState } from 'react';
 import useGetQuery from '../../hooks/useGetQuery';
+import { comicMapper } from '../../utils/mappers';
 import Comic from '../../components/Comic';
 import EmptyHeart from '../../assets/empty-heart.svg';
 import Heart from '../../assets/heart.svg';
 import './Detail.css';
 
 const Detail = ({ character, onClickMarkAsFavorite }) => {
+  const { name, description, thumbnail } = character;
+  const [isFavorite, setIsFavorite] = useState(character.isFavorite);
   const { data: comics, isLoading } = useGetQuery(
-    character.comics.collectionURI,
+    character.comicsURI,
     {
       orderBy: 'onsaleDate',
       limit: 20
-    }
+    },
+    comicMapper
   );
-  const [isFavorite, setIsFavorite] = useState(character.isFavorite);
-  const { name, description, thumbnail } = character;
 
   const handleClickMarkAsFavorite = () => {
     setIsFavorite((prevValue) => !prevValue);
@@ -29,10 +31,7 @@ const Detail = ({ character, onClickMarkAsFavorite }) => {
     <main>
       <div className="character-wrapper">
         <section className="character">
-          <img
-            className="character__image"
-            src={`${thumbnail.path}.${thumbnail.extension}`}
-          />
+          <img className="character__image" src={thumbnail} />
           <div className="character__info">
             <div className="group">
               <h1 className="character__name">{name}</h1>

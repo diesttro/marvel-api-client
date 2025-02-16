@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Search from '../../components/Search';
 import Card from '../../components/Card';
 import useGetQuery from '../../hooks/useGetQuery';
+import { characterMapper } from '../../utils/mappers';
 import './Home.css';
 
 const Home = ({
@@ -12,7 +13,8 @@ const Home = ({
   const [search, setSearch] = useState('');
   const { data: characters, isLoading } = useGetQuery(
     'http://gateway.marvel.com/v1/public/characters',
-    { nameStartsWith: search, limit: 50 }
+    { nameStartsWith: search, limit: 50 },
+    characterMapper
   );
 
   return (

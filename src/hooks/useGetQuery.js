@@ -12,18 +12,19 @@ const defaultParams = {
   hash: SparkMD5.hash(TS + PRIVATE_API_KEY + PUBLIC_API_KEY)
 };
 
-const getQuery = async (url) => {
+const getQuery = async (url, mapper) => {
   try {
     const response = await fetch(url);
     const json = await response.json();
+    const results = json.data.results;
 
-    return json.data.results;
+    return mapper ? results.map(mapper) : results;
   } catch (error) {
     console.error(error);
   }
 };
 
-const useGetQuery = (uri, params = {}) => {
+const useGetQuery = (uri = '', params = {}, mapper) => {
   const urlParams = createURLParams({
     ...defaultParams,
     ...params
@@ -31,7 +32,7 @@ const useGetQuery = (uri, params = {}) => {
 
   return useQuery({
     queryKey: [uri, urlParams],
-    queryFn: () => getQuery(uri + '?' + urlParams)
+    queryFn: () => getQuery(uri + '?' + urlParams, mapper)
   });
 };
 

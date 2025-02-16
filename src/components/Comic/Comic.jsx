@@ -5,11 +5,7 @@ const Comic = ({ data }) => {
 
   return (
     <div className="comic">
-      <img
-        alt={title}
-        className="comic__image"
-        src={`${thumbnail.path}.${thumbnail.extension}`}
-      />
+      <img alt={title} className="comic__image" src={thumbnail} />
       <p className="comic__title">{title}</p>
       <p className="comic__year">
         {dates.find((date) => date.type === 'onsaleDate').date.slice(0, 4)}

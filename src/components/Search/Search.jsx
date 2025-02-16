@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import MagnifyingGlass from '../../assets/magnifying-glass.svg';
 import './Search.css';
 
-const Search = ({ resultsCount, onChangeSearch }) => {
+const Search = ({ children, onChangeSearch }) => {
   const [search, setSearch] = useState('');
 
   const handleChange = (event) => setSearch(event.target.value);
@@ -23,7 +23,7 @@ const Search = ({ resultsCount, onChangeSearch }) => {
         value={search}
         onChange={handleChange}
       />
-      <p className="search__results">{resultsCount} results</p>
+      <p className="search__results">{children}</p>
     </section>
   );
 };

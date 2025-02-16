@@ -17,7 +17,9 @@ const Favorites = ({
 
   return (
     <main className="favorites-wrapper">
-      <Search resultsCount={characters?.length} onChangeSearch={setSearch} />
+      <Search onChangeSearch={setSearch}>
+        {`${characters?.length} results`}
+      </Search>
       {characters ? (
         <div className="favorite-list">
           {characters.map((character) => {

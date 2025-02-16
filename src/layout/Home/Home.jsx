@@ -19,10 +19,9 @@ const Home = ({
 
   return (
     <main className="characters-wrapper">
-      <Search
-        resultsCount={isLoading ? 'Loading' : characters?.length}
-        onChangeSearch={setSearch}
-      />
+      <Search onChangeSearch={setSearch}>
+        {isLoading ? 'Loading results' : `${characters?.length} results`}
+      </Search>
       {characters ? (
         <div className="list">
           {characters.map((character) => {
